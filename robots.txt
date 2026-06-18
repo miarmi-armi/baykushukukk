@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /_yonetim9k/
+
+User-agent: Googlebot
+Disallow: /_yonetim9k/
+
+Sitemap: https://baykushukuk.com/sitemap.xml

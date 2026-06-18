@@ -1,0 +1,8 @@
+# GitHub Pages Jekyll ayarları
+# _ ile başlayan klasörlerin doğru serve edilmesi için
+
+# Jekyll'i devre dışı bırak (saf HTML sitesi)
+include:
+  - _yonetim9k
+
+plugins: []

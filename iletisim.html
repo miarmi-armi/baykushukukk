@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://api.exchangerate-api.com https://api.gold-api.com https://api.openweathermap.org https://api.emailjs.com; frame-src https://www.google.com;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İletişim — Baykuş Hukuk</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- Favicon -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<!-- Open Graph -->
+<meta property="og:site_name" content="Baykuş Hukuk">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="İletişim — Baykuş Hukuk">
+<meta property="og:description" content="İstanbul Bağcılar'da hukuki danışmanlık için bize ulaşın. Ücretsiz ilk görüşme için form doldurun.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baykushukuk.com/iletisim.html">
+<meta name="description" content="İstanbul Bağcılar'da hukuki danışmanlık için bize ulaşın. Ücretsiz ilk görüşme için form doldurun.">
+<link rel="canonical" href="https://baykushukuk.com/iletisim.html">
+<meta property="og:image" content="https://baykushukuk.com/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/svg+xml">
+<meta name="theme-color" content="#1a2744">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "İletişim — Baykuş Hukuk",
+  "url": "https://baykushukuk.com/iletisim.html",
+  "mainEntity": {
+    "@type": "LegalService",
+    "name": "Baykuş Hukuk",
+    "telephone": "",
+    "email": "—",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "",
+      "addressLocality": "Bağcılar",
+      "addressRegion": "İstanbul",
+      "addressCountry": "TR"
+    }
+  }
+}
+</script>
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ── EmailJS Yapılandırması ──────────────────────────────────────
+  // 1) https://www.emailjs.com adresine ücretsiz kayıt olun
+  // 2) Email Service ekleyin (Gmail, Outlook vb.) → SERVICE_ID alın
+  // 3) Email Template oluşturun → TEMPLATE_ID alın
+  // 4) Account > API Keys'ten PUBLIC_KEY alın
+  // 5) Aşağıdaki 3 değeri kendi bilgilerinizle değiştirin:
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // örn: 'service_abc123'
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // örn: 'template_xyz789'
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // örn: 'aBcDeFgHiJkLmNoP'
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  } else {
+    console.warn('[İletişim] EmailJS yüklenemedi (CDN engellenmiş olabilir). Form Supabase/yerel kayda düşecek, e-posta bildirimi gönderilemeyecek.');
+  }
+</script>
+<link rel="manifest" href="manifest.json">
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">İçeriğe geç</a>
+
+<!-- SON DAKİKA TICKER -->
+<div class="ticker" id="site-ticker" style="display:none">
+  <div class="ticker-label">🔴 Son Dakika</div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+</div>
+
+<div class="topbar">
+<div class="topbar-inner">
+  <div class="topbar-left"><span>📞 <a href="tel:">—</a></span><span>✉ <a href="mailto:">—</a></span></div>
+  <div class="topbar-right"><span>🕐 Pzt–Cum 09:00–18:00</span></div>
+</div>
+</div><!-- /topbar -->
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-owl">🦉</span> Baykuş Hukuk</a>
+  <div class="nav-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="makaleler.html">Makaleler</a>
+    <a href="gundem.html">Gündem</a>
+    <a href="hizmetler.html">Hizmetler</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="avukatlar.html">Avukatlarımız</a>
+    <a href="linkler.html">Hukuki Linkler</a>
+    <a href="iletisim.html" class="active">İletişim</a>
+    <button onclick="openSearch()" class="nav-admin-btn" style="background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit" aria-label="Arama">🔍</button>
+    <a href="randevu.html" class="nav-appt-btn">📅 Randevu</a>
+    
+  </div>
+</div><!-- /nav-inner -->
+</nav>
+<div class="breadcrumb"><a href="index.html">Ana Sayfa</a> <span>›</span> <strong>İletişim</strong></div>
+<div class="main-wrap full" id="main-content">
+  <div class="content-area">
+    <div class="section">
+      <div class="section-title">Bize Ulaşın</div>
+      <div class="gold-line"></div>
+      <p class="section-subtitle">Hukuki danışmanlık için aşağıdaki formu doldurabilir veya doğrudan iletişime geçebilirsiniz.</p>
+
+      <div class="contact-grid">
+        <div>
+          <div style="margin-bottom:2rem">
+            <div class="contact-item"><div class="c-icon">📍</div><div><div class="c-label">Adres</div><div class="c-val" data-setting="address"><br>Bağcılar / İstanbul</div></div></div>
+            <div class="contact-item"><div class="c-icon">📞</div><div><div class="c-label">Telefon</div><div class="c-val" data-setting="phone">—</div></div></div>
+            <div class="contact-item"><div class="c-icon">✉️</div><div><div class="c-label">E-posta</div><div class="c-val" data-setting="email">—</div></div></div>
+            <div class="contact-item"><div class="c-icon">🕐</div><div><div class="c-label">Çalışma Saatleri</div><div class="c-val" data-setting="hours">Pzt–Cum: 09:00–18:00 | Cmt: 10:00–14:00</div></div></div>
+          </div>
+
+          <div class="contact-form">
+            <h3 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:1.2rem;font-size:1.1rem">Mesaj Gönderin</h3>
+            <div class="form-group"><label class="form-label" for="cf-name">Adınız Soyadınız *</label><input class="form-input" id="cf-name" type="text" required aria-describedby="cf-name-err" placeholder="Ahmet Yılmaz" autocomplete="name"><span class="field-error" id="cf-name-err">En az 2 karakter giriniz.</span></div>
+            <div class="form-group"><label class="form-label" for="cf-email">E-posta *</label><input class="form-input" id="cf-email" type="email" required aria-describedby="cf-email-err" placeholder="ahmet@email.com" autocomplete="email"><span class="field-error" id="cf-email-err">Geçerli e-posta giriniz.</span></div>
+            <div class="form-group"><label class="form-label" for="cf-phone">Telefon</label><input class="form-input" id="cf-phone" type="tel" placeholder="+90 5xx xxx xx xx" pattern="[+]?[0-9\s\-()]{7,20}" autocomplete="tel"></div>
+            <div class="form-group"><label class="form-label" for="cf-subject">Konu</label><input class="form-input" id="cf-subject" type="text" placeholder="Davanızın konusu"></div>
+            <div class="form-group"><label class="form-label" for="cf-message">Mesajınız *</label><textarea class="form-textarea" id="cf-message" required aria-describedby="cf-message-err" placeholder="Hukuki durumunuzu kısaca açıklayın..." style="min-height:150px"></textarea><span class="field-error" id="cf-message-err">En az 10 karakter giriniz.</span></div>
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1rem">
+              <input type="checkbox" id="cf-consent" style="width:16px;height:16px;cursor:pointer">
+              <label for="cf-consent" style="font-size:.8rem;color:var(--muted);cursor:pointer">Kişisel verilerimin işlenmesine onay veriyorum.</label>
+            </div>
+            <!-- Honeypot spam koruması -->
+            <input type="text" name="website" id="hp-contact" style="position:absolute;left:-9999px;opacity:0;height:0" tabindex="-1" autocomplete="off">
+            <button class="btn-primary" style="width:100%" id="submit-btn" onclick="submitContactForm()">📨 Mesaj Gönder</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="map-container">
+            <iframe class="map-iframe" id="map-frame" src="about:blank" data-src-setting="mapUrl" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ofis Konumu — Baykuş Hukuk" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+
+          <div style="margin-top:1.5rem;background:#fff;border:.5px solid var(--border);border-radius:8px;padding:1.4rem">
+            <h4 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.9rem">Sık Sorulan Sorular</h4>
+            <div style="display:flex;flex-direction:column;gap:.75rem">
+              <details style="border:.5px solid var(--border);border-radius:6px;padding:.75rem">
+                <summary style="cursor:pointer;font-weight:600;color:var(--navy);font-size:.9rem">İlk danışma ücretsiz mi?</summary>
+                <p style="margin-top:.6rem;font-size:.85rem;color:var(--muted);line-height:1.6">Evet, ilk 30 dakikalık danışma ücretsizdir. Randevu almak için bizi arayabilir veya form doldurabilirsiniz.</p>
+              </details>
+              <details style="border:.5px solid var(--border);border-radius:6px;padding:.75rem">
+                <summary style="cursor:pointer;font-weight:600;color:var(--navy);font-size:.9rem">Dava süreçleri ne kadar sürer?</summary>
+                <p style="margin-top:.6rem;font-size:.85rem;color:var(--muted);line-height:1.6">Dava süresi, türüne ve mahkemeye göre değişmektedir. Detaylı bilgi için danışma randevusu alabilirsiniz.</p>
+              </details>
+              <details style="border:.5px solid var(--border);border-radius:6px;padding:.75rem">
+                <summary style="cursor:pointer;font-weight:600;color:var(--navy);font-size:.9rem">Online danışmanlık veriyor musunuz?</summary>
+                <p style="margin-top:.6rem;font-size:.85rem;color:var(--muted);line-height:1.6">Evet, video konferans ve telefon aracılığıyla online danışmanlık hizmeti sunmaktayız.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Butonu -->
+<a href="#" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+   aria-label="WhatsApp ile iletişime geçin" title="WhatsApp ile iletişime geçin">💬</a>
+
+<!-- Yukarı Çık -->
+<button class="scroll-top" id="scroll-top" aria-label="Yukarı çık" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Global Arama -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span style="font-size:1.2rem;color:var(--muted)">🔍</span>
+      <input type="search" id="global-search-input" placeholder="Makale, kategori veya konu ara..."
+             oninput="runGlobalSearch(this.value)" autocomplete="off">
+      <button onclick="closeSearch()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted)">✕</button>
+    </div>
+    <div class="search-results" id="global-search-results">
+      <div class="search-empty">Aramak istediğiniz konuyu yazın...</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="index.html" class="logo" style="color:#fff;font-size:1.1rem;padding:0;margin-bottom:.7rem">🦉 Baykuş Hukuk</a><p>İstanbul Bağcılar'da müvekkillerine güven ve uzmanlıkla hizmet vermektedir.</p></div>
+    <div class="footer-col"><h4>Sayfalar</h4><a href="makaleler.html">Makaleler</a><a href="gundem.html">Gündem</a><a href="hizmetler.html">Hizmetler</a></div>
+    <div class="footer-col"><h4>İletişim</h4><p>📍 Bağcılar, İstanbul</p><p>📞 —</p><p>✉ —</p><p>🕐 Pzt–Cum 09:00–18:00</p></div>
+  </div>
+  <div class="footer-social-links" style="display:flex;gap:1rem;flex-wrap:wrap;padding:.75rem 0;border-top:.5px solid rgba(255,255,255,.12);margin-top:.5rem"></div>
+  <div class="footer-bottom">© <span id="footer-year">2026</span> <span style="color:var(--gold)">Baykuş Hukuk</span> — Tüm hakları saklıdır. &nbsp;|&nbsp; <a href="gizlilik.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Gizlilik</a> &nbsp;|&nbsp; <a href="cerez-politikasi.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Çerez</a></div>
+</footer>
+
+<div id="notify" class="notify"></div>
+<script src="js/supabase.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+async function submitContactForm() {
+  // Honeypot: bot tespiti
+  if (document.getElementById('hp-contact').value) return;
+
+  // Spam rate limiting
+  if (!FormGuard.canSubmit()) {
+    notify(`Lütfen ${FormGuard.remaining()} saniye bekleyin.`, 'error');
+    return;
+  }
+
+  const consent = document.getElementById('cf-consent').checked;
+  if (!consent) { notify('Lütfen kişisel verilerin işlenmesine onay verin.', 'error'); return; }
+
+  const name    = document.getElementById('cf-name').value.trim().slice(0, 100);
+  const email   = document.getElementById('cf-email').value.trim().slice(0, 200);
+  const phone   = document.getElementById('cf-phone').value.trim().slice(0, 20);
+  const subject = document.getElementById('cf-subject').value.trim().slice(0, 200);
+  const message = document.getElementById('cf-message').value.trim().slice(0, 2000);
+
+  if (!name || !email || !message) { notify('Lütfen zorunlu (*) alanları doldurun.', 'error'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { notify('Geçerli bir e-posta adresi giriniz.', 'error'); return; }
+  if (message.length < 10) { notify('Mesajınız çok kısa.', 'error'); return; }
+
+  FormGuard.markSubmit();
+
+  // ── Butonu yükleniyor moduna al ──
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Gönderiliyor...'; }
+
+  // ── 1. Supabase'e kaydet (kalıcı, tüm cihazlardan görünür) ──
+  const sbSaved = await SB.addMessage({ name, email, phone, subject: subject || 'İletişim Formu', message });
+
+  // ── 2. Yedek: localStorage'a da kaydet ──
+  const messages = Store.get('contact_messages', []);
+  messages.unshift({
+    id: Date.now(),
+    name: escapeHtml(name), email: escapeHtml(email),
+    phone: escapeHtml(phone), subject: escapeHtml(subject) || 'İletişim Formu',
+    message: escapeHtml(message), date: formatDate(), read: false
+  });
+  Store.set('contact_messages', messages);
+
+  // ── 3. EmailJS ile e-posta gönder ──
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name: name, from_email: email, phone: phone || '—',
+      subject: subject || 'İletişim Formu', message,
+      sent_at: new Date().toLocaleString('tr-TR')
+    });
+    ['cf-name','cf-email','cf-phone','cf-subject','cf-message'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = '';
+    });
+    document.getElementById('cf-consent').checked = false;
+    if (btn) {
+      btn.textContent = '✓ Gönderildi';
+      setTimeout(() => { btn.disabled = false; btn.textContent = '📨 Mesaj Gönder'; }, 60000);
+    }
+    notify('Mesajınız başarıyla iletildi. En kısa sürede yanıtlayacağız. ✓');
+  } catch (err) {
+    console.error('EmailJS hatası:', err);
+    if (btn) { btn.disabled = false; btn.textContent = '📨 Mesaj Gönder'; }
+    if (sbSaved) notify('Mesajınız sisteme kaydedildi. E-posta gönderilemedi, sizi arayacağız.', 'warn');
+    else notify('Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi arayın.', 'error');
+  }
+}
+
+// Harita URL'sini settings'ten güncelle
+document.addEventListener('DOMContentLoaded', () => {
+  const s = getSettings();
+  if (s.mapUrl) document.getElementById('map-frame').src = s.mapUrl;
+
+  // ── Gerçek zamanlı form validasyonu ──
+  function validateField(id, testFn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const check = () => {
+      const val = el.value.trim();
+      const errEl = document.getElementById(id + '-err');
+      if (!val && el.required !== false && id !== 'cf-phone' && id !== 'cf-subject') {
+        el.classList.add('error'); el.classList.remove('success');
+        if (errEl) { errEl.textContent = 'Bu alan zorunludur.'; errEl.classList.add('show'); }
+      } else if (val && testFn && !testFn(val)) {
+        el.classList.add('error'); el.classList.remove('success');
+        if (errEl) { errEl.classList.add('show'); }
+      } else {
+        el.classList.remove('error');
+        if (val) el.classList.add('success');
+        if (errEl) errEl.classList.remove('show');
+      }
+    };
+    el.addEventListener('blur', check);
+    el.addEventListener('input', () => {
+      if (el.classList.contains('error')) check();
+    });
+  }
+
+  validateField('cf-name', v => v.length >= 2);
+  validateField('cf-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+  validateField('cf-message', v => v.length >= 10);
+});
+</script>
+
+</body>
+</html>

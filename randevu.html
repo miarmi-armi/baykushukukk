@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://api.exchangerate-api.com https://api.gold-api.com https://api.openweathermap.org; frame-src https://www.google.com;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Baykuş Hukuk — Online randevu alın, avukatlarımızla görüşün.">
+<meta name="robots" content="index, follow">
+<title>Online Randevu — Baykuş Hukuk</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<meta property="og:title" content="Online Randevu — Baykuş Hukuk">
+<meta property="og:description" content="Avukatlarımızla görüşmek için online randevu alın.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://baykushukuk.com/randevu.html">
+<link rel="manifest" href="manifest.json">
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
+  <meta property="og:image" content="https://baykushukuk.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Baykuş Hukuk Bürosu",
+  "url": "https://baykushukuk.com",
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Online Hukuki Danışma Randevusu",
+      "description": "Uzman avukatlarımızla online randevu alın."
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">İçeriğe geç</a>
+
+<div class="ticker" id="site-ticker" style="display:none">
+  <div class="ticker-label">🔴 Son Dakika</div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+</div>
+
+<div class="topbar">
+<div class="topbar-inner">
+  <div class="topbar-left">
+    <span>📞 <a href="tel:" id="tb-phone">—</a></span>
+    <span>✉ <a href="mailto:" id="tb-email">—</a></span>
+  </div>
+  <div class="topbar-right">
+    <span>🕐 Pzt–Cum 09:00–18:00</span>
+    <span>📍 Bağcılar, İstanbul</span>
+  </div>
+</div>
+
+</div><!-- /topbar -->
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-owl">🦉</span> Baykuş Hukuk</a>
+  <div class="nav-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="makaleler.html">Makaleler</a>
+    <a href="hizmetler.html">Hizmetler</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="avukatlar.html">Avukatlarımız</a>
+    <a href="iletisim.html">İletişim</a>
+    <a href="randevu.html" class="nav-appt-btn active">📅 Randevu</a>
+    <button onclick="openSearch()" class="nav-admin-btn" style="background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit" aria-label="Arama">🔍</button>
+  </div>
+</div><!-- /nav-inner -->
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Ana Sayfa</a>
+  <span>›</span>
+  <strong>Online Randevu</strong>
+</div>
+
+<div class="main-wrap full" id="main-content" style="max-width:960px">
+
+  <div class="about-hero" style="padding:1.5rem 0 1rem">
+    <p style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Ücretsiz İlk Görüşme</p>
+    <h1 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--navy);margin-bottom:.5rem">Online Randevu Alın</h1>
+    <p style="color:var(--muted);font-size:.92rem">İlk 30 dakikalık danışma ücretsizdir. Formu doldurun, size en kısa sürede dönelim.</p>
+  </div>
+
+  <div class="appointment-wrap">
+
+    <!-- FORM -->
+    <div class="appt-form-card">
+      <h2>Randevu Talebi</h2>
+
+      <!-- Başarı mesajı -->
+      <div class="appt-success-box" id="appt-success">
+        <div style="font-size:2.5rem;margin-bottom:.5rem">✅</div>
+        <h3>Randevu Talebiniz Alındı!</h3>
+        <p>En kısa sürede sizi arayarak randevunuzu onaylayacağız. Teşekkür ederiz.</p>
+        <p style="margin-top:.75rem;font-size:.78rem;color:#166534" id="appt-confirm-detail"></p>
+      </div>
+
+      <div id="appt-form-inner">
+        <!-- Adım 1: Kişisel Bilgiler -->
+        <div style="margin-bottom:1.5rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;padding-bottom:.65rem;border-bottom:.5px solid var(--border)">
+            <div class="appt-step-num">1</div>
+            <span style="font-weight:700;color:var(--navy);font-size:.9rem">Kişisel Bilgiler</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+            <div class="appt-field">
+              <label for="appt-name">Ad Soyad *</label>
+              <input type="text" id="appt-name" placeholder="Adınız Soyadınız" required>
+            </div>
+            <div class="appt-field">
+              <label for="appt-phone">Telefon *</label>
+              <input type="tel" id="appt-phone" placeholder="+90 5XX XXX XX XX" required>
+            </div>
+          </div>
+          <div class="appt-field">
+            <label for="appt-email">E-posta</label>
+            <input type="email" id="appt-email" placeholder="ornek@mail.com">
+          </div>
+        </div>
+
+        <!-- Adım 2: Hukuki Konu -->
+        <div style="margin-bottom:1.5rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;padding-bottom:.65rem;border-bottom:.5px solid var(--border)">
+            <div class="appt-step-num">2</div>
+            <span style="font-weight:700;color:var(--navy);font-size:.9rem">Hukuki Konu</span>
+          </div>
+          <div class="appt-field">
+            <label for="appt-category">Hukuk Alanı *</label>
+            <select id="appt-category" required>
+              <option value="">Seçiniz...</option>
+              <option>Ceza Hukuku</option>
+              <option>Aile Hukuku</option>
+              <option>Ticaret Hukuku</option>
+              <option>Gayrimenkul Hukuku</option>
+              <option>İş Hukuku</option>
+              <option>İdare Hukuku</option>
+              <option>Miras Hukuku</option>
+              <option>İcra &amp; İflas Hukuku</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="appt-field">
+            <label for="appt-lawyer">Avukat Tercihi</label>
+            <select id="appt-lawyer">
+              <option value="">Fark etmez (Uygun avukat atanır)</option>
+            </select>
+          </div>
+          <div class="appt-field">
+            <label for="appt-note">Kısa Açıklama</label>
+            <textarea id="appt-note" rows="3" placeholder="Davanız hakkında kısa bilgi verin (isteğe bağlı)..." style="resize:vertical"></textarea>
+          </div>
+        </div>
+
+        <!-- Adım 3: Tarih & Saat -->
+        <div style="margin-bottom:1.5rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;padding-bottom:.65rem;border-bottom:.5px solid var(--border)">
+            <div class="appt-step-num">3</div>
+            <span style="font-weight:700;color:var(--navy);font-size:.9rem">Tarih & Saat</span>
+          </div>
+          <div class="appt-field">
+            <label for="appt-date">Tercih Ettiğiniz Tarih *</label>
+            <input type="date" id="appt-date" required>
+          </div>
+          <div class="appt-field">
+            <label>Uygun Saatler</label>
+            <div class="appt-slots" id="appt-slots">
+              <div style="grid-column:1/-1;color:var(--muted);font-size:.82rem;padding:.5rem 0">
+                Önce tarih seçiniz...
+              </div>
+            </div>
+            <input type="hidden" id="appt-time">
+          </div>
+        </div>
+
+        <!-- KVKK onay -->
+        <div style="display:flex;gap:.65rem;align-items:flex-start;margin-bottom:1.25rem;padding:.9rem;background:var(--cream);border-radius:6px">
+          <input type="checkbox" id="appt-kvkk" style="margin-top:.15rem;width:auto;flex-shrink:0">
+          <label for="appt-kvkk" style="font-size:.78rem;color:var(--muted);line-height:1.5;cursor:pointer">
+            Randevu talebim kapsamında kişisel verilerimin işlenmesini,
+            <a href="gizlilik.html" target="_blank" style="color:var(--gold)">Gizlilik</a> &nbsp;|&nbsp; <a href="cerez-politikasi.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Çerez</a>
+            çerçevesinde kabul ediyorum. *
+          </label>
+        </div>
+
+        <button onclick="submitAppointment()" class="btn-primary" style="width:100%;justify-content:center;font-size:.95rem;padding:.85rem">
+          📅 Randevu Talebi Gönder
+        </button>
+      </div>
+    </div>
+
+    <!-- SIDEBAR BİLGİ -->
+    <div>
+      <div class="appt-sidebar-card" style="margin-bottom:1.25rem">
+        <h3>Randevu Bilgisi</h3>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">🕐</div>
+          <div class="appt-info-text">
+            <strong>Çalışma Saatleri</strong>
+            Pzt–Cum: 09:00–18:00<br>Cumartesi: 10:00–14:00
+          </div>
+        </div>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">🎁</div>
+          <div class="appt-info-text">
+            <strong>Ücretsiz İlk Görüşme</strong>
+            İlk 30 dakikalık danışma tamamen ücretsizdir.
+          </div>
+        </div>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">📞</div>
+          <div class="appt-info-text">
+            <strong>Telefon ile de alabilirsiniz</strong>
+            <a href="tel:" id="sidebar-phone" style="color:var(--navy)">—</a>
+          </div>
+        </div>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">📍</div>
+          <div class="appt-info-text">
+            <strong>Adres</strong>
+            <br>Bağcılar / İstanbul
+          </div>
+        </div>
+      </div>
+
+      <!-- Avukat önizleme kartları -->
+      <div id="sidebar-lawyers" style="display:flex;flex-direction:column;gap:.85rem"></div>
+    </div>
+  </div>
+
+</div>
+
+<a href="#" class="whatsapp-btn" id="wa-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişime geçin" title="WhatsApp">💬</a>
+<button class="scroll-top" id="scroll-top" aria-label="Yukarı çık" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Arama">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span style="font-size:1.2rem;color:var(--muted)">🔍</span>
+      <input type="search" id="global-search-input" placeholder="Makale, kategori veya konu ara..." aria-label="Siteyi ara" oninput="runGlobalSearch(this.value)" autocomplete="off">
+      <button onclick="closeSearch()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted)" aria-label="Aramayı kapat">✕</button>
+    </div>
+    <div class="search-results" id="global-search-results"><div class="search-empty">Aramak istediğiniz konuyu yazın...</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;font-size:1.1rem;padding:0;margin-bottom:.7rem">🦉 Baykuş Hukuk</a>
+      <p id="footer-desc">İstanbul Bağcılar'da faaliyet gösteren Baykuş Hukuk Bürosu, müvekkillerine güven ve uzmanlıkla hizmet vermektedir.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sayfalar</h4>
+      <a href="makaleler.html">Makaleler</a>
+      <a href="hizmetler.html">Hizmetler</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="randevu.html">Randevu</a>
+    </div>
+    <div class="footer-col">
+      <h4>İletişim</h4>
+      <p>📍 Bağcılar, İstanbul</p>
+      <p id="ft-phone">📞 —</p>
+      <p id="ft-email">✉ —</p>
+    </div>
+  </div>
+  <div class="footer-social-links" style="display:flex;gap:1rem;flex-wrap:wrap;padding:.75rem 0;border-top:.5px solid rgba(255,255,255,.12);margin-top:.5rem"></div>
+  <div class="footer-bottom">
+    © <span id="footer-year">2026</span> <span style="color:var(--gold)">Baykuş Hukuk</span> — Tüm hakları saklıdır. &nbsp;|&nbsp;
+    <a href="gizlilik.html" style="color:rgba(255,255,255,.4);text-decoration:none">Gizlilik Politikası</a>
+  </div>
+</footer>
+
+<div id="notify" class="notify"></div>
+<script src="js/supabase.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+// SB yükleme sonrası yeniden render
+async function initRandevuPage() {
+
+  const s = getSettings();
+  // Ayarlar
+  if (s.phone) {
+    document.getElementById('tb-phone').textContent = s.phone;
+    document.getElementById('tb-phone').href = 'tel:' + s.phone.replace(/\s/g,'');
+    document.getElementById('ft-phone').textContent = '📞 ' + s.phone;
+    document.getElementById('sidebar-phone').textContent = s.phone;
+    document.getElementById('sidebar-phone').href = 'tel:' + s.phone.replace(/\s/g,'');
+  }
+  if (s.email) {
+    document.getElementById('tb-email').textContent = s.email;
+    document.getElementById('tb-email').href = 'mailto:' + s.email;
+    document.getElementById('ft-email').textContent = '✉ ' + s.email;
+  }
+  if (s.footerDesc) document.getElementById('footer-desc').textContent = s.footerDesc;
+  const waPhone = (s.whatsapp || s.phone || '').replace(/[^0-9]/g,'');
+  document.getElementById('wa-btn').href = `https://wa.me/${waPhone}?text=${encodeURIComponent('Merhaba, randevu almak istiyorum.')}`;
+
+  // Min tarih bugün+1
+  const dateInput = document.getElementById('appt-date');
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().split('T')[0];
+  // Max 60 gün
+  const maxDate = new Date();
+  maxDate.setDate(maxDate.getDate() + 60);
+  dateInput.max = maxDate.toISOString().split('T')[0];
+
+  dateInput.addEventListener('change', renderSlots);
+
+  // Avukat seçeneği doldur
+  // Supabase'den avukatlar, yoksa localStorage yedek
+  const sbLawyersRandevu = await SB.getLawyers().catch(() => null);
+  const lawyers = (sbLawyersRandevu && sbLawyersRandevu.length ? sbLawyersRandevu : getLawyers()).filter(l => l.active !== false);
+  const sel = document.getElementById('appt-lawyer');
+  lawyers.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.id;
+    opt.textContent = `${l.name} — ${l.specialties[0]}`;
+    sel.appendChild(opt);
+  });
+
+  // Sidebar avukat mini kartları
+  const sidebarLawyers = document.getElementById('sidebar-lawyers');
+  lawyers.forEach(l => {
+    sidebarLawyers.innerHTML += `
+      <div style="background:#fff;border:.5px solid var(--border);border-radius:8px;padding:.9rem;display:flex;gap:.85rem;align-items:center">
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0">${escapeHtml(l.initials)}</div>
+        <div>
+          <div style="font-size:.86rem;font-weight:700;color:var(--navy)">${escapeHtml(l.name)}</div>
+          <div style="font-size:.75rem;color:var(--gold)">${escapeHtml(l.title)}</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.15rem">${escapeHtml(l.specialties.slice(0,2).join(', '))}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  // Ticker
+  const ticker = getTicker();
+  if (ticker.active && ticker.text) {
+    const el = document.getElementById('site-ticker');
+    const track = document.getElementById('ticker-track');
+    el.style.display = 'flex';
+    const items = ticker.text.split('|').map(t => t.trim()).filter(Boolean);
+    track.innerHTML = [...items,...items].map(t => `<span class="ticker-item">${escapeHtml(t)}</span>`).join('');
+  }
+}
+
+_randevuInitDone = false;
+document.addEventListener('DOMContentLoaded', async () => { await initRandevuPage(); _randevuInitDone = true; });
+// sb:loaded: sadece görünen metin/bağlantıları güncelle, formu resetleme
+document.addEventListener('sb:loaded', () => {
+  const _s = getSettings();
+  const _pairs = [
+    ['tb-phone', 'phone', 'tel:'],
+    ['sidebar-phone', 'phone', 'tel:'],
+    ['ft-phone', null, null],
+    ['tb-email', 'email', 'mailto:'],
+    ['ft-email', null, null],
+    ['footer-desc', 'footerDesc', null],
+  ];
+  if (_s.phone) {
+    const p = document.getElementById('tb-phone'); if(p){p.textContent=_s.phone;p.href='tel:'+_s.phone.replace(/[^0-9+]/g,'');}
+    const sp=document.getElementById('sidebar-phone'); if(sp){sp.textContent=_s.phone;sp.href='tel:'+_s.phone.replace(/[^0-9+]/g,'');}
+    const fp=document.getElementById('ft-phone'); if(fp) fp.textContent='📞 '+_s.phone;
+  }
+  if (_s.email) {
+    const te=document.getElementById('tb-email'); if(te){te.textContent=_s.email;te.href='mailto:'+_s.email;}
+    const fe=document.getElementById('ft-email'); if(fe) fe.textContent='✉ '+_s.email;
+  }
+  if (_s.footerDesc) { const fd=document.getElementById('footer-desc'); if(fd) fd.textContent=_s.footerDesc; }
+});
+
+async function renderSlots() {
+  const dateStr = document.getElementById('appt-date').value;
+  const container = document.getElementById('appt-slots');
+  document.getElementById('appt-time').value = '';
+  if (!dateStr) { container.innerHTML = '<div style="grid-column:1/-1;color:var(--muted);font-size:.82rem;padding:.5rem 0">Önce tarih seçiniz...</div>'; return; }
+
+  // Pazar günü kapalı
+  const day = new Date(dateStr).getDay();
+  if (day === 0) {
+    container.innerHTML = '<div style="grid-column:1/-1;color:#ef4444;font-size:.82rem;padding:.5rem 0">Pazar günleri randevu alınmamaktadır.</div>';
+    return;
+  }
+
+  container.innerHTML = '<div style="grid-column:1/-1;color:var(--muted);font-size:.82rem;padding:.5rem 0">⏳ Müsait saatler yükleniyor…</div>';
+
+  // Güne göre slot aralığı (Cumartesi kısa gün)
+  const baseSlots = day === 6
+    ? APPOINTMENT_SLOTS.filter(s => s < '14:00')
+    : APPOINTMENT_SLOTS;
+
+  // Supabase'den o tarihe ait DOLU slotları çek
+  const takenSlots = await SB.getTakenSlots(dateStr);
+  const available = baseSlots.filter(s => !takenSlots.includes(s));
+
+  if (!available.length) {
+    container.innerHTML = '<div style="grid-column:1/-1;color:#ef4444;font-size:.82rem;padding:.5rem 0">Bu tarihte uygun saat bulunmamaktadır. Lütfen başka bir gün seçin.</div>';
+    return;
+  }
+  container.innerHTML = available.map(s => `
+    <button type="button" class="appt-slot" onclick="selectSlot(this,'${s}')">${s}</button>
+  `).join('');
+}
+
+function selectSlot(btn, time) {
+  document.querySelectorAll('.appt-slot').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('appt-time').value = time;
+}
+
+async function submitAppointment() {
+  const name     = document.getElementById('appt-name').value.trim();
+  const phone    = document.getElementById('appt-phone').value.trim();
+  const email    = document.getElementById('appt-email').value.trim();
+  const category = document.getElementById('appt-category').value;
+  const lawyerId = document.getElementById('appt-lawyer').value;
+  const note     = document.getElementById('appt-note').value.trim();
+  const date     = document.getElementById('appt-date').value;
+  const time     = document.getElementById('appt-time').value;
+  const kvkk     = document.getElementById('appt-kvkk').checked;
+
+  if (!name)     { notify('Lütfen adınızı girin.', 'error'); return; }
+  if (!phone)    { notify('Lütfen telefon numaranızı girin.', 'error'); return; }
+  if (!category) { notify('Lütfen hukuk alanı seçin.', 'error'); return; }
+  if (!date)     { notify('Lütfen tarih seçin.', 'error'); return; }
+  if (!time)     { notify('Lütfen saat seçin.', 'error'); return; }
+  if (!kvkk)     { notify('KVKK onayı gereklidir.', 'error'); return; }
+
+  // Avukat adı — önce localStorage, yoksa Supabase
+  let lawyerName = 'Uygun avukat atanacak';
+  if (lawyerId) {
+    let lawyers = getLawyers();
+    if (!lawyers || !lawyers.length) lawyers = await SB.getLawyers().catch(() => []) || [];
+    const l = lawyers.find(x => String(x.id) === String(lawyerId));
+    if (l) lawyerName = l.name;
+  }
+
+  // Butonu devre dışı bırak
+  const submitBtn = document.querySelector('#appt-form-inner .btn-primary');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '⏳ Gönderiliyor...'; }
+
+  // ── Supabase'e yaz ──
+  const result = await SB.addAppointment({ name, phone, email, category, lawyerId, lawyerName, note, date, time });
+
+  if (!result) {
+    notify('Randevu oluşturulamadı, lütfen tekrar deneyin.', 'error');
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Randevu Talep Et'; }
+    return;
+  }
+
+  // Yedek: localStorage'a da kaydet
+  addAppointment({ name, phone, email, category, lawyerId, lawyerName, note, date, time });
+
+  // UI güncelle
+  document.getElementById('appt-form-inner').style.display = 'none';
+  const success = document.getElementById('appt-success');
+  success.classList.add('show');
+  const dateFormatted = new Date(date).toLocaleDateString('tr-TR', { day:'numeric', month:'long', year:'numeric' });
+  document.getElementById('appt-confirm-detail').textContent =
+    `${dateFormatted} - ${time} | ${category} | ${lawyerName}`;
+
+  notify('Randevu talebiniz alındı!', 'success');
+}
+</script>
+</body>
+</html>

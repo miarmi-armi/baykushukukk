@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://api.exchangerate-api.com https://api.gold-api.com https://api.openweathermap.org; frame-src https://www.google.com;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Baykuş Hukuk Bürosu — İstanbul Bağcılar'da profesyonel hukuki danışmanlık ve dava takip hizmetleri.">
+<meta name="robots" content="index, follow">
+<title>Baykuş Hukuk — Profesyonel Hukuk Bürosu</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- Favicon -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<!-- Open Graph -->
+<meta property="og:site_name" content="Baykuş Hukuk">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Baykuş Hukuk — Profesyonel Hukuk Bürosu">
+<meta property="og:description" content="İstanbul Bağcılar'da profesyonel hukuki danışmanlık ve dava takip hizmetleri. Ücretsiz ilk görüşme için bizi arayın.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baykushukuk.com/">
+<meta property="og:image" content="https://baykushukuk.com/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/svg+xml">
+<meta name="theme-color" content="#1a2744">
+<link rel="canonical" href="https://baykushukuk.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Baykuş Hukuk",
+  "description": "İstanbul Bağcılar'da profesyonel hukuki danışmanlık ve dava takip hizmetleri.",
+  "url": "https://baykushukuk.com",
+  "telephone": "__PHONE__",
+  "email": "__EMAIL__",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "",
+    "addressLocality": "Bağcılar",
+    "addressRegion": "İstanbul",
+    "addressCountry": "TR"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "₺₺",
+  "areaServed": "İstanbul"
+}
+</script>
+<link rel="manifest" href="manifest.json">
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
+</head>
+<body>
+
+<!-- ERİŞİLEBİLİRLİK: Klavye kullanıcıları için atlama linki -->
+<a href="#main-content" class="skip-link">İçeriğe geç</a>
+
+<!-- SON DAKİKA TICKER -->
+<div class="ticker" id="site-ticker" style="display:none">
+  <div class="ticker-label">🔴 Son Dakika</div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+<div class="topbar-inner">
+  <div class="topbar-left">
+    <span id="tb-phone-wrap"></span>
+    <span id="tb-email-wrap"></span>
+  </div>
+  <div class="topbar-right">
+    <span>🕐 Pzt–Cum 09:00–18:00</span>
+    <span>📍 Bağcılar, İstanbul</span>
+  </div>
+</div><!-- /topbar-inner -->
+</div><!-- /topbar -->
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-owl">🦉</span> Baykuş Hukuk</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Ana Sayfa</a>
+    <a href="makaleler.html">Makaleler</a>
+    <a href="gundem.html">Gündem</a>
+    <a href="hizmetler.html">Hizmetler</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="linkler.html">Hukuki Linkler</a>
+    <a href="iletisim.html">İletişim</a>
+    <button onclick="openSearch()" class="nav-admin-btn" style="background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit" aria-label="Arama">🔍</button>
+    <a href="randevu.html" class="nav-appt-btn">📅 Randevu</a>
+    
+  </div>
+</div><!-- /nav-inner -->
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+  <div class="hero-badge">İstanbul Bağcılar — Hukuk Bürosu</div>
+  <h1 data-setting="heroText">Haklarınızı <span>Güvence Altına</span> Alıyoruz</h1>
+  <p data-setting="heroDesc">İstanbul Bağcılar'da faaliyet gösteren Baykuş Hukuk Bürosu, her türlü hukuki sorununuzda güvenilir ve profesyonel çözümler sunar.</p>
+  <div class="hero-btns">
+    <a href="iletisim.html" class="btn-primary">📋 Ücretsiz Danışma</a>
+    <a href="hizmetler.html" class="btn-outline">Hizmetlerimiz</a>
+  </div>
+</div><!-- /hero-inner -->
+</section>
+
+<!-- STATS -->
+<div class="stats">
+<div class="stats-inner">
+  <div class="stat"><div class="stat-num" id="stat-dava">500+</div><div class="stat-label">Çözülen Dava</div></div>
+  <div class="stat"><div class="stat-num" id="stat-yil">15+</div><div class="stat-label">Yıl Deneyim</div></div>
+  <div class="stat"><div class="stat-num" id="stat-mem">%98</div><div class="stat-label">Müvekkil Memnuniyeti</div></div>
+  <div class="stat"><div class="stat-num" id="stat-alan">12</div><div class="stat-label">Hukuk Alanı</div></div>
+</div><!-- /stats-inner -->
+</div><!-- /stats -->
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap" id="main-content">
+  <div class="content-area">
+
+    <!-- Son Makaleler -->
+    <div class="section">
+      <div class="section-hdr">
+        <div>
+          <div class="section-title">Son Makaleler</div>
+          <div class="gold-line"></div>
+          <p class="section-subtitle">Güncel hukuki gelişmeler ve bilgilendirici içerikler</p>
+        </div>
+        <a href="makaleler.html" class="btn-secondary" style="margin-top:.5rem">Tümü →</a>
+      </div>
+      <div class="article-grid" id="home-articles">
+        <!-- JS tarafından doldurulur -->
+      </div>
+    </div>
+
+    <!-- Hizmetler -->
+    <div class="section" style="padding-top:0">
+      <div class="section-title">Uygulama Alanlarımız</div>
+      <div class="gold-line"></div>
+      <p class="section-subtitle">Uzmanlaştığımız hukuk dallarında profesyonel destek sunuyoruz</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">⚖️</div>
+          <div class="service-title">Ceza Hukuku</div>
+          <div class="service-desc">Ceza davaları, savunma ve itiraz süreçlerinde yanınızdayız.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👨‍👩‍👧</div>
+          <div class="service-title">Aile Hukuku</div>
+          <div class="service-desc">Boşanma, velayet ve nafaka davalarında uzman hukuki destek.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <div class="service-title">Ticaret Hukuku</div>
+          <div class="service-desc">Şirket kuruluşu, sözleşme hukuku ve ticari uyuşmazlıklar.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏠</div>
+          <div class="service-title">Gayrimenkul</div>
+          <div class="service-desc">Tapu, kira ve inşaat hukuku konularında profesyonel danışmanlık.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👷</div>
+          <div class="service-title">İş Hukuku</div>
+          <div class="service-desc">İşçi-işveren uyuşmazlıkları ve tazminat davalarında yanınızdayız.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏛️</div>
+          <div class="service-title">İdare Hukuku</div>
+          <div class="service-desc">İdari işlemlere itiraz ve idare mahkemesi davalarında destek.</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Avukatlarımız -->
+    <div class="section" style="padding-top:0">
+      <div class="section-hdr">
+        <div>
+          <div class="section-title">Avukat Kadromuz</div>
+          <div class="gold-line"></div>
+          <p class="section-subtitle">Deneyimli ve uzman avukatlarımızla tanışın</p>
+        </div>
+        <a href="avukatlar.html" class="btn-secondary" style="margin-top:.5rem">Tümü →</a>
+      </div>
+      <div class="lawyers-grid" id="home-lawyers"></div>
+    </div>
+
+    <!-- Referanslar -->
+    <div class="section" style="padding-top:0">
+      <div class="section-title">Müvekkil Görüşleri</div>
+      <div class="gold-line"></div>
+      <p class="section-subtitle">Müvekkillerimizin deneyimleri</p>
+      <div class="testimonials-grid" id="home-testimonials" style="margin-top:1.25rem"></div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Son Gündem -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">📰 Hukuk Gündemi</div>
+      <div class="sidebar-widget-body">
+        <div id="sidebar-gundem"></div>
+        <a href="gundem.html" style="font-size:.78rem;color:var(--gold);text-decoration:none;display:block;margin-top:.6rem">Tüm gündem →</a>
+      </div>
+    </div>
+
+    <!-- Son Makaleler -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">📚 Son Yazılar</div>
+      <div class="sidebar-widget-body" id="sidebar-recent"></div>
+    </div>
+
+    <!-- Kategoriler -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">🗂️ Kategoriler</div>
+      <div class="sidebar-widget-body" id="sidebar-cats"></div>
+    </div>
+
+    <!-- İletişim -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">📞 Hızlı İletişim</div>
+      <div class="sidebar-widget-body">
+        <p style="font-size:.83rem;color:var(--muted);line-height:1.6;margin-bottom:.9rem">Hukuki sorularınız için bize ulaşın.</p>
+        <p style="font-size:.85rem;margin-bottom:.4rem" id="sidebar-phone-display">📞 —</p>
+        <p style="font-size:.85rem;margin-bottom:.9rem" id="sidebar-email-display">✉ —</p>
+        <a href="iletisim.html" class="btn-primary" style="width:100%;text-align:center;display:block">Form Doldur</a>
+      </div>
+    </div>
+
+    <!-- Hukuki Linkler -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">🔗 Faydalı Linkler</div>
+      <div class="sidebar-widget-body" id="sidebar-links"></div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- WhatsApp Butonu -->
+<a href="#" id="whatsapp-float-btn" target="_blank" rel="noopener noreferrer"
+   class="whatsapp-btn" aria-label="WhatsApp ile iletişime geçin" title="WhatsApp">
+  💬
+</a>
+
+<!-- Yukarı Çık Butonu -->
+<button class="scroll-top" id="scroll-top" aria-label="Yukarı çık" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Global Arama -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Arama">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span style="font-size:1.2rem;color:var(--muted)">🔍</span>
+      <input type="search" id="global-search-input" placeholder="Makale, kategori veya konu ara..."
+             aria-label="Siteyi ara" oninput="runGlobalSearch(this.value)" autocomplete="off">
+      <button onclick="closeSearch()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted)" aria-label="Aramayı kapat">✕</button>
+    </div>
+    <div class="search-results" id="global-search-results">
+      <div class="search-empty">Aramak istediğiniz konuyu yazın...</div>
+    </div>
+  </div>
+</div>
+
+<!-- GÜNLÜK BİLGİLER -->
+<section class="gunluk-bilgiler" id="gunluk-bilgiler">
+  <div class="gb-inner">
+    <div class="gb-header">
+      <div class="gb-title">📊 Günlük Bilgiler</div>
+      <div class="gb-subtitle" id="gb-tarih"></div>
+    </div>
+    <div class="gb-grid">
+
+      <!-- DÖVİZ -->
+      <div class="gb-card" id="gb-doviz">
+        <div class="gb-card-title">💱 Döviz Kurları</div>
+        <div class="gb-card-body" id="doviz-body">
+          <div class="gb-loading">Yükleniyor...</div>
+        </div>
+        <div class="gb-card-footer">Kaynak: exchangerate-api.com</div>
+      </div>
+
+      <!-- ALTIN / BORSA -->
+      <div class="gb-card" id="gb-borsa">
+        <div class="gb-card-title">📈 Altın & Borsa</div>
+        <div class="gb-card-body" id="borsa-body">
+          <div class="gb-loading">Yükleniyor...</div>
+        </div>
+        <div class="gb-card-footer">Anlık veriler</div>
+      </div>
+
+      <!-- HAVA DURUMU -->
+      <div class="gb-card" id="gb-hava">
+        <div class="gb-card-title">🌤 Hava Durumu</div>
+        <div class="gb-card-body" id="hava-body">
+          <div class="gb-loading">Konum alınıyor...</div>
+        </div>
+        <div class="gb-card-footer" id="hava-footer">OpenWeatherMap</div>
+      </div>
+
+      <!-- NÖBETÇİ NOTER -->
+      <div class="gb-card" id="gb-noter">
+        <div class="gb-card-title">🏛 Nöbetçi Noter</div>
+        <div class="gb-card-body" id="noter-body">
+          <div class="gb-loading">Yükleniyor...</div>
+        </div>
+        <div class="gb-card-footer">Türkiye Noterler Birliği</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- gb-* sınıfları style.css'te tanımlı -->
+
+<script>
+// Tarih
+(function(){
+  const d = new Date();
+  const gunler = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+  const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+  document.getElementById('gb-tarih').textContent = gunler[d.getDay()] + ', ' + d.getDate() + ' ' + aylar[d.getMonth()] + ' ' + d.getFullYear();
+})();
+
+// ── DÖVİZ ──
+async function loadDoviz() {
+  const el = document.getElementById('doviz-body');
+  try {
+    const r = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    const data = await r.json();
+    const usdTry = data.rates.TRY;
+    const eurTry = (data.rates.TRY / data.rates.EUR).toFixed(2);
+    const gbpTry = (data.rates.TRY / data.rates.GBP).toFixed(2);
+    el.innerHTML = `
+      <div class="gb-row"><span class="gb-label">🇺🇸 Dolar (USD)</span><span class="gb-val">${usdTry.toFixed(2)} ₺</span></div>
+      <div class="gb-row"><span class="gb-label">🇪🇺 Euro (EUR)</span><span class="gb-val">${eurTry} ₺</span></div>
+      <div class="gb-row"><span class="gb-label">🇬🇧 Sterlin (GBP)</span><span class="gb-val">${gbpTry} ₺</span></div>
+    `;
+  } catch(e) {
+    el.innerHTML = '<div class="gb-error">Döviz verisi alınamadı.</div>';
+  }
+}
+
+// ── ALTIN & BORSA (Goldprice + sabit BIST özet) ──
+async function loadBorsa() {
+  const el = document.getElementById('borsa-body');
+  try {
+    // Altın fiyatı USD/oz → TRY gram dönüşümü
+    const [kurRes, goldRes] = await Promise.all([
+      fetch('https://api.exchangerate-api.com/v4/latest/USD'),
+      fetch('https://api.gold-api.com/price/XAU')
+    ]);
+    const kurData = await kurRes.json();
+    const goldData = await goldRes.json();
+    const usdTry = kurData.rates.TRY;
+    const goldGram = ((goldData.price / 31.1035) * usdTry).toFixed(0);
+    const ceyrek = (parseFloat(goldGram) * 1.7).toFixed(0);
+    el.innerHTML = `
+      <div class="gb-row"><span class="gb-label">🥇 Gram Altın</span><span class="gb-val">${Number(goldGram).toLocaleString('tr-TR')} ₺</span></div>
+      <div class="gb-row"><span class="gb-label">🪙 Çeyrek Altın</span><span class="gb-val">${Number(ceyrek).toLocaleString('tr-TR')} ₺</span></div>
+      <div class="gb-row"><span class="gb-label">📊 BIST 100</span><span class="gb-val" id="bist-val">—</span></div>
+    `;
+  } catch(e) {
+    el.innerHTML = '<div class="gb-error">Borsa/altın verisi alınamadı.</div>';
+  }
+}
+
+// ── HAVA DURUMU ──
+function loadHava() {
+  const el = document.getElementById('hava-body');
+  const APIKEY = window.OWM_KEY || ''; // Admin panelinden API key girin (panel > Ayarlar)
+  function getWeather(lat, lon, city) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric&lang=tr`)
+      .then(r => r.json())
+      .then(d => {
+        if (d.cod !== 200) throw new Error();
+        const icon = getWeatherEmoji(d.weather[0].id);
+        el.innerHTML = `
+          <div class="gb-hava-main">
+            <div class="gb-hava-icon">${icon}</div>
+            <div>
+              <div class="gb-hava-temp">${Math.round(d.main.temp)}°C</div>
+              <div class="gb-hava-desc">${d.weather[0].description}</div>
+            </div>
+          </div>
+          <div class="gb-hava-details">
+            <span>💧 Nem: %${d.main.humidity}</span>
+            <span>🌬 Rüzgar: ${Math.round(d.wind.speed*3.6)} km/s</span>
+            <span>🌡 Hissedilen: ${Math.round(d.main.feels_like)}°C</span>
+            <span>👁 Görüş: ${(d.visibility/1000).toFixed(1)} km</span>
+          </div>
+        `;
+        document.getElementById('hava-footer').textContent = city + ' · OpenWeatherMap';
+      })
+      .catch(() => { el.innerHTML = '<div class="gb-error">Hava durumu alınamadı.</div>'; });
+  }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => getWeather(pos.coords.latitude, pos.coords.longitude, 'Konumunuz'),
+      ()   => getWeather(41.0082, 28.9784, 'İstanbul') // fallback İstanbul
+    );
+  } else {
+    getWeather(41.0082, 28.9784, 'İstanbul');
+  }
+}
+
+function getWeatherEmoji(id) {
+  if (id >= 200 && id < 300) return '⛈';
+  if (id >= 300 && id < 400) return '🌦';
+  if (id >= 500 && id < 600) return '🌧';
+  if (id >= 600 && id < 700) return '❄️';
+  if (id >= 700 && id < 800) return '🌫';
+  if (id === 800) return '☀️';
+  if (id === 801) return '🌤';
+  if (id <= 804) return '☁️';
+  return '🌡';
+}
+
+// ── NÖBETÇİ NOTER ──
+async function loadNoter() {
+  const el = document.getElementById('noter-body');
+  // TNB resmi API yoktur, il bazında statik veri gösteriyoruz
+  // Gerçek entegrasyon için TNB ile iletişime geçmek gerekir
+  const bugun = new Date();
+  const gun = bugun.getDay(); // 0=Pazar
+  // İstanbul Bağcılar bölgesi örnek nöbet listesi (haftalık rotasyon)
+  // Gerçek nöbetçi noter bilgisi için resmi kaynağa yönlendiriyoruz
+  el.innerHTML = `
+    <div style="font-size:.82rem;color:#374151;line-height:1.6;padding:.3rem 0">
+      Nöbetçi noter bilgisi için lütfen Türkiye Noterler Birliği'nin resmi sitesini ziyaret edin.
+    </div>
+    <a href="https://www.tnb.org.tr" target="_blank" rel="noopener"
+       style="display:inline-block;margin-top:.6rem;background:#1a2744;color:#fff;border-radius:5px;padding:.4rem .85rem;font-size:.78rem;text-decoration:none;font-weight:600">
+      🏛 tnb.org.tr →
+    </a>
+  `;
+}
+
+// Hepsini başlat
+loadDoviz();
+loadBorsa();
+loadHava();
+loadNoter();
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;font-size:1.1rem;padding:0;margin-bottom:.7rem">🦉 Baykuş Hukuk</a>
+      <p data-setting="footerDesc">İstanbul Bağcılar'da faaliyet gösteren Baykuş Hukuk Bürosu, müvekkillerine güven ve uzmanlıkla hizmet vermektedir.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sayfalar</h4>
+      <a href="makaleler.html">Makaleler</a>
+      <a href="gundem.html">Gündem</a>
+      <a href="hizmetler.html">Hizmetler</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="avukatlar.html">Avukatlarımız</a>
+      <a href="linkler.html">Hukuki Linkler</a>
+      <a href="iletisim.html">İletişim</a>
+    </div>
+    <div class="footer-col">
+      <h4>Hukuk Alanları</h4>
+      <a href="hizmetler.html">Ceza Hukuku</a>
+      <a href="hizmetler.html">Aile Hukuku</a>
+      <a href="hizmetler.html">İş Hukuku</a>
+      <a href="hizmetler.html">Gayrimenkul</a>
+    </div>
+    <div class="footer-col">
+      <h4>İletişim</h4>
+      <p id="footer-address-display">📍 —</p>
+      <p id="footer-phone-display">📞 —</p>
+      <p id="footer-email-display">✉ —</p>
+      <p>🕐 Pzt–Cum 09:00–18:00</p>
+    </div>
+  </div>
+    <div style="border-top:.5px solid rgba(255,255,255,.12);padding:1.1rem 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div style="font-size:.88rem;font-weight:600;color:#fff;margin-bottom:.15rem">📬 Haftalık Hukuk Bülteni</div>
+        <div style="font-size:.76rem;color:rgba(255,255,255,.4)">Güncel mevzuat ve haber özeti her hafta.</div>
+      </div>
+      <form id="footer-bulten-form" style="display:flex;gap:.45rem;flex-wrap:wrap" onsubmit="handleBultenSubmit(event)">
+        <input type="email" id="footer-bulten-email" required placeholder="E-posta adresiniz"
+          style="border:.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff;border-radius:5px;padding:.48rem .85rem;font-family:inherit;font-size:.83rem;outline:none;min-width:200px">
+        <button type="submit"
+          style="background:#c9a84c;color:#1a2744;border:none;border-radius:5px;padding:.48rem 1rem;font-family:inherit;font-size:.83rem;font-weight:700;cursor:pointer">
+          Abone Ol
+        </button>
+      </form>
+    </div>
+    <div id="footer-bulten-msg" style="font-size:.78rem;margin-top:.45rem;display:none"></div>
+  </div>
+
+  <div class="footer-social-links" style="display:flex;gap:1rem;flex-wrap:wrap;padding:.75rem 0;border-top:.5px solid rgba(255,255,255,.12);margin-top:.5rem"></div>
+  <div class="footer-bottom">
+    © <span id="footer-year">2026</span> <span style="color:var(--gold)">Baykuş Hukuk</span> — Tüm hakları saklıdır. &nbsp;|&nbsp; <a href="gizlilik.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Gizlilik</a> &nbsp;|&nbsp; <a href="cerez-politikasi.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Çerez</a> &nbsp;|&nbsp; <span data-setting="license"></span>
+  </div>
+</footer>
+
+<div id="notify" class="notify"></div>
+
+<script src="js/supabase.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Ana sayfa: son makaleler
+
+// SB yükleme sonrası yeniden render
+async function initIndexPage() {
+
+  // heroText / heroDesc — sanitizeContent ile XSS koruması
+  try {
+    const s = getSettings();
+
+  // Schema.org — telefon/email dinamik güncelle
+  try {
+    const sc = document.querySelector('script[type="application/ld+json"]');
+    if (sc && s.phone) {
+      sc.textContent = sc.textContent
+        .replace('"__PHONE__"', JSON.stringify(s.phone.replace(/\s/g,'')))
+        .replace('"__EMAIL__"', JSON.stringify(s.email || ''));
+    }
+  } catch(e) {}
+    const heroTextEl = document.querySelector('[data-setting="heroText"]');
+    const heroDescEl = document.querySelector('[data-setting="heroDesc"]');
+    const footerDescEl = document.querySelector('[data-setting="footerDesc"]');
+    if (heroTextEl && s.heroText) heroTextEl.innerHTML = sanitizeContent(s.heroText);
+    if (heroDescEl && s.heroDesc) heroDescEl.textContent = s.heroDesc;
+    if (footerDescEl && s.footerDesc) footerDescEl.textContent = s.footerDesc;
+  } catch {}
+
+  // Stats — admin'den yönetilebilir
+  try {
+    const hk = getHakkimizda();
+    if (hk.davaAdeti)   { const el = document.getElementById('stat-dava'); if (el) el.textContent = hk.davaAdeti; }
+    if (hk.kurulusYili) { const el = document.getElementById('stat-yil');  if (el) el.textContent = (new Date().getFullYear() - parseInt(hk.kurulusYili)) + '+'; }
+    if (hk.memnuniyet)  { const el = document.getElementById('stat-mem');  if (el) el.textContent = hk.memnuniyet; }
+    if (hk.uzmanlik)    { const el = document.getElementById('stat-alan'); if (el) el.textContent = hk.uzmanlik; }
+  } catch {}
+
+  const articles = getArticles().filter(a => a.published).slice(0, 4);
+  const el = document.getElementById('home-articles');
+  if (!el) return;
+  el.innerHTML = articles.map(a => `
+    <a href="makale.html?slug=${encodeURIComponent(a.slug)}" class="article-card">
+      <div class="article-thumb" style="${a.img ? 'background-image:url('+encodeURI(a.img)+')' : ''}">
+        ${!a.img ? a.emoji : ''}
+      </div>
+      <div class="article-body">
+        <span class="article-tag">${escapeHtml(a.cat)}</span>
+        <div class="article-title">${escapeHtml(a.title)}</div>
+        <div class="article-excerpt">${escapeHtml(a.excerpt)}</div>
+        <div class="article-meta">🦉 ${escapeHtml(a.author)} &nbsp;·&nbsp; 📅 ${escapeHtml(a.date)} &nbsp;·&nbsp; 👁 ${a.views||0} görüntülenme</div>
+      </div>
+    </a>
+  `).join('');
+
+  // Avukatlar (max 3)
+  // Supabase'den cek, yoksa localStorage yedek
+  const sbLawyersIdx = await SB.getLawyers().catch(() => null);
+  const lawyers = (sbLawyersIdx && sbLawyersIdx.length ? sbLawyersIdx : getLawyers().filter(l => l.active)).slice(0, 3);
+  const hl = document.getElementById('home-lawyers');
+  if (hl) hl.innerHTML = lawyers.map(l => `
+    <div class="lawyer-card">
+      <div class="lawyer-card-photo">
+        ${l.photo ? `<img loading="lazy" src="${escapeHtml(l.photo)}" alt="${escapeHtml(l.name)}">` : `<span class="lawyer-initials">${escapeHtml(l.initials)}</span>`}
+      </div>
+      <div class="lawyer-card-body">
+        <div class="lawyer-card-name">${escapeHtml(l.name)}</div>
+        <div class="lawyer-card-title">${escapeHtml(l.title)}</div>
+        <div class="lawyer-specialties">
+          ${l.specialties.map(s => `<span class="lawyer-specialty-tag">${escapeHtml(s)}</span>`).join('')}
+        </div>
+        <div class="lawyer-card-bio">${escapeHtml(l.bio.slice(0,100))}...</div>
+        <a href="avukatlar.html" class="btn-secondary" style="margin-top:.75rem;font-size:.78rem;padding:.35rem .75rem">Profil →</a>
+      </div>
+    </div>
+  `).join('');
+
+  // Referanslar
+  const testimonials = getTestimonials().filter(t => t.active).slice(0, 4);
+  const ht = document.getElementById('home-testimonials');
+  if (ht) ht.innerHTML = testimonials.map(t => `
+    <div class="testimonial-card">
+      <div class="testimonial-stars">${'★'.repeat(t.rating)}</div>
+      <div class="testimonial-text">${escapeHtml(t.text)}</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">${escapeHtml(t.name[0])}</div>
+        <div>
+          <div class="testimonial-name">${escapeHtml(t.name)}</div>
+          <div class="testimonial-cat">${escapeHtml(t.category)}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Sidebar gündem
+  // Supabase'den gundem
+  const sbGundemIdx = await SB.getGundem().catch(() => null);
+  const gundem = ((sbGundemIdx && sbGundemIdx.length) ? sbGundemIdx : getGundem()).slice(0, 3);
+  const sg = document.getElementById('sidebar-gundem');
+  if (sg) {
+    sg.innerHTML = gundem.map(g => `
+      <div style="padding:.55rem 0;border-bottom:.5px solid var(--border)">
+        <div style="font-size:.73rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:.2rem">${escapeHtml(g.date)}</div>
+        <div style="font-size:.83rem;color:var(--navy);font-weight:600;line-height:1.35">${escapeHtml(g.title)}</div>
+        <span class="gundem-tag">${escapeHtml(g.tag)}</span>
+      </div>
+    `).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initIndexPage);
+document.addEventListener('sb:loaded', initIndexPage);
+
+async function handleBultenSubmit(e) {
+  e.preventDefault();
+  var emailEl = document.getElementById('footer-bulten-email');
+  var msgEl   = document.getElementById('footer-bulten-msg');
+  if (!emailEl) return;
+  if (msgEl) { msgEl.textContent = '⏳ Kaydediliyor…'; msgEl.style.display = 'block'; msgEl.style.color = '#c9a84c'; }
+  var result = await SB.addSubscriber(emailEl.value);
+  if (msgEl) {
+    msgEl.textContent   = result.msg;
+    msgEl.style.display = 'block';
+    msgEl.style.color   = result.ok ? '#c9a84c' : '#fca5a5';
+    if (result.ok) document.getElementById('footer-bulten-form').reset();
+    setTimeout(function(){ msgEl.style.display = 'none'; }, 4000);
+  }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://api.exchangerate-api.com https://api.gold-api.com https://api.openweathermap.org; frame-src https://www.google.com;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Baykuş Hukuk — Güncel hukuk haberleri ve mevzuat değişiklikleri.">
+<title>Hukuk Gündemi — Baykuş Hukuk</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<!-- Open Graph -->
+<meta property="og:site_name" content="Baykuş Hukuk">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Hukuk Gündemi — Baykuş Hukuk">
+<meta property="og:description" content="Türk hukukundaki son gelişmeler, yeni yargıtay kararları ve mevzuat değişiklikleri.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baykushukuk.com/gundem.html">
+<meta name="description" content="Türk hukukundaki son gelişmeler, yeni yargıtay kararları ve mevzuat değişiklikleri.">
+<link rel="canonical" href="https://baykushukuk.com/gundem.html">
+<meta property="og:image" content="https://baykushukuk.com/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/svg+xml">
+<meta name="theme-color" content="#1a2744">
+<link rel="manifest" href="manifest.json">
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">İçeriğe geç</a>
+
+
+<!-- SON DAKİKA TICKER -->
+<div class="ticker" id="site-ticker" style="display:none">
+  <div class="ticker-label">🔴 Son Dakika</div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+</div>
+
+<div class="topbar">
+<div class="topbar-inner">
+  <div class="topbar-left">
+    <span>📞 <a href="tel:">—</a></span>
+    <span>✉ <a href="mailto:">—</a></span>
+  </div>
+  <div class="topbar-right"><span>🕐 Pzt–Cum 09:00–18:00</span></div>
+</div>
+
+</div><!-- /topbar -->
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-owl">🦉</span> Baykuş Hukuk</a>
+  <div class="nav-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="makaleler.html">Makaleler</a>
+    <a href="gundem.html" class="active">Gündem</a>
+    <a href="hizmetler.html">Hizmetler</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="avukatlar.html">Avukatlarımız</a>
+    <a href="linkler.html">Hukuki Linkler</a>
+    <a href="iletisim.html">İletişim</a>
+    <a href="randevu.html" class="nav-appt-btn">📅 Randevu</a>
+    <button onclick="openSearch()" class="nav-admin-btn" style="background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit" aria-label="Arama">🔍</button>
+    
+  </div>
+</div><!-- /nav-inner -->
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Ana Sayfa</a> <span>›</span> <strong>Hukuk Gündemi</strong>
+</div>
+
+<div class="main-wrap" id="main-content">
+  <div class="content-area">
+    <div class="section">
+      <div class="section-title">Hukuk Gündemi</div>
+      <div class="gold-line"></div>
+      <p class="section-subtitle">Güncel mevzuat değişiklikleri, yargı kararları ve hukuk haberleri</p>
+      <div id="gundem-list"></div>
+    </div>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">📚 Son Yazılar</div>
+      <div class="sidebar-widget-body" id="sidebar-recent"></div>
+    </div>
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">🗂️ Kategoriler</div>
+      <div class="sidebar-widget-body" id="sidebar-cats"></div>
+    </div>
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-hdr">🔗 Faydalı Linkler</div>
+      <div class="sidebar-widget-body" id="sidebar-links"></div>
+    </div>
+  
+          <!-- Bülten Widget -->
+          <div class="sidebar-widget">
+            <div class="sidebar-widget-hdr">📬 Haftalık Bülten</div>
+            <div class="sidebar-widget-body">
+              <p style="font-size:.77rem;color:var(--muted);margin-bottom:.6rem;line-height:1.6">Güncel hukuki gelişmeleri haftalık alın.</p>
+              <form onsubmit="sbBulten(event)" style="display:flex;flex-direction:column;gap:.4rem">
+                <input type="email" required placeholder="E-posta adresiniz"
+                  style="border:.5px solid var(--border);border-radius:4px;padding:.42rem .65rem;font-family:inherit;font-size:.81rem;outline:none;width:100%">
+                <button type="submit"
+                  style="background:#c9a84c;color:#1a2744;border:none;border-radius:4px;padding:.42rem;font-family:inherit;font-weight:700;font-size:.81rem;cursor:pointer">
+                  Abone Ol
+                </button>
+              </form>
+              <div class="sb-bl-msg" style="font-size:.74rem;margin-top:.3rem;display:none"></div>
+            </div>
+          </div>
+
+        </aside>
+</div>
+
+<!-- WhatsApp Butonu -->
+<a href="#" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+   aria-label="WhatsApp ile iletişime geçin" title="WhatsApp ile iletişime geçin">💬</a>
+
+<!-- Yukarı Çık -->
+<button class="scroll-top" id="scroll-top" aria-label="Yukarı çık" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Global Arama -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span style="font-size:1.2rem;color:var(--muted)">🔍</span>
+      <input type="search" id="global-search-input" placeholder="Makale, kategori veya konu ara..."
+             oninput="runGlobalSearch(this.value)" autocomplete="off">
+      <button onclick="closeSearch()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted)">✕</button>
+    </div>
+    <div class="search-results" id="global-search-results">
+      <div class="search-empty">Aramak istediğiniz konuyu yazın...</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;font-size:1.1rem;padding:0;margin-bottom:.7rem">🦉 Baykuş Hukuk</a>
+      <p>İstanbul Bağcılar'da faaliyet gösteren Baykuş Hukuk Bürosu, müvekkillerine güven ve uzmanlıkla hizmet vermektedir.</p>
+    </div>
+    <div class="footer-col"><h4>Sayfalar</h4><a href="makaleler.html">Makaleler</a><a href="gundem.html">Gündem</a><a href="hizmetler.html">Hizmetler</a><a href="hakkimizda.html">Hakkımızda</a><a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a></div>
+    <div class="footer-col"><h4>İletişim</h4><p>📍 Bağcılar, İstanbul</p><p>📞 —</p><p>✉ —</p></div>
+  </div>
+  <div class="footer-social-links" style="display:flex;gap:1rem;flex-wrap:wrap;padding:.75rem 0;border-top:.5px solid rgba(255,255,255,.12);margin-top:.5rem"></div>
+  <div class="footer-bottom">© <span id="footer-year"><//span> <span style="color:var(--gold)">Baykuş Hukuk</span> — Tüm hakları saklıdır. &nbsp;|&nbsp; <a href="gizlilik.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Gizlilik</a> &nbsp;|&nbsp; <a href="cerez-politikasi.html" style="color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s">Çerez</a></div>
+</footer>
+
+<div id="notify" class="notify"></div>
+<script src="js/supabase.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+async function initGundemPage() {
+
+  // Supabase'den cek, yoksa localStorage yedek
+  const sbGundem = await SB.getGundem().catch(() => null);
+  const items = (sbGundem && sbGundem.length) ? sbGundem : getGundem();
+  const el = document.getElementById('gundem-list');
+  el.innerHTML = items.length ? items.map(g => `
+    <div class="gundem-item">
+      <div class="gundem-date">${escapeHtml(g.date)}</div>
+      <div class="gundem-title">${escapeHtml(g.title)}</div>
+      <div class="gundem-text">${escapeHtml(g.text)}</div>
+      ${g.link ? `<a href="${encodeURI(g.link)}" target="_blank" rel="noopener noreferrer" style="font-size:.78rem;color:var(--gold);margin-top:.5rem;display:inline-block">Devamını oku →</a>` : ''}
+      <div><span class="gundem-tag">${escapeHtml(g.tag)}</span></div>
+    </div>
+  `).join('') : '<p style="color:var(--muted)">Henüz gündem eklenmedi.</p>';
+}
+
+document.addEventListener('DOMContentLoaded', initGundemPage);
+document.addEventListener('sb:loaded', initGundemPage);
+
+async function sbBulten(e) {
+  e.preventDefault();
+  var inp = e.target.querySelector('input[type=email]');
+  var msg = e.target.closest('.sidebar-widget-body').querySelector('.sb-bl-msg');
+  var res = typeof SB !== 'undefined'
+    ? await SB.addSubscriber(inp.value).catch(() => ({ ok: false, msg: 'Bağlantı hatası.' }))
+    : { ok: false, msg: 'Servis bulunamadı.' };
+  if (msg) {
+    msg.textContent = res.msg;
+    msg.style.display = 'block';
+    msg.style.color = res.ok ? '#0F6E56' : '#A32D2D';
+    if (res.ok) e.target.reset();
+    setTimeout(function(){ msg.style.display='none'; }, 3500);
+  }
+}
+
+</script>
+
+</body>
+</html>
